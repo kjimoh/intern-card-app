@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 200vh;
+  background-color: #efefef;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  height: 25rem;
+  width: 62.625rem;
+  background: #efefef;
+  border-radius: 1.5rem;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-image {
+  width: 40%;
+  height: 100%;
+  background-color: #bcd1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-details {
+  width: 60%;
+  height: 100%;
+  background-color: #fff;
+}
+
+img {
+  height: 15rem;
+  width: 15rem;
+}
+
+span {
+  color: #6e798c;
+}
+
+.one {
+  position: absolute;
+  width: 8.9375rem;
+  height: 1.6875rem;
+  left: 27.1875rem;
+  top: 2rem;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.6875rem;
+}
+
+.two {
+  position: absolute;
+  width: 5.5625rem;
+  height: 1.5625rem;
+  right: 2.5rem;
+  top: 2.0625rem;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
+  text-align: right;
+}
+
+h3 {
+  position: absolute;
+  width: 32.9375rem;
+  height: 5.75rem;
+  left: 27.1875rem;
+  top: 5.25rem;
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 2.875rem;
+  color: #081f32;
+}
+
+p {
+  position: absolute;
+  width: 32.9375rem;
+  height: 6.75rem;
+  left: 27.1875rem;
+  top: 11.9375rem;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  color: #374a59;
+}
+
+.circle {
+  position: absolute;
+  bottom: 2rem;
+  left: 27.1875rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 2.75rem;
+  border: solid 2px #374a59;
+  background-color: #bcd1ff;
+}
+
+.author {
+  position: absolute;
+  width: 7.4375rem;
+  height: 1.5625rem;
+  left: 30.6875rem;
+  bottom: 2.5625rem;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
+  color: #007ae9;
+}
+
+.learn {
+  position: absolute;
+  width: 7.125rem;
+  height: 1.5625rem;
+  right: 2.5rem;
+  bottom: 2.5625rem;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
+  /* identical to box height */
+
+  text-align: right;
+
+  /* Cards 2 / main */
+
+  color: #007ae9;
 }
