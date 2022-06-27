@@ -52,9 +52,7 @@ const App = () => {
 
     const newPost = { title, days, body, author, category, image, bgc };
 
-    const id = posts.length + 1;
-
-    setPosts([...posts, { ...newPost, id }]);
+    setPosts([...posts, { ...newPost, id: posts.length + 1 }]);
 
     console.log(newPost);
   };
