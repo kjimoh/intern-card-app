@@ -34,9 +34,29 @@ const App = () => {
     },
   ]);
 
+  const [title, setTitle] = useState("");
+  const [days, setDays] = useState("");
+  const [body, setBody] = useState("");
+  const [author, setAuthor] = useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState();
+  const [bgc, setBgc] = useState("");
+
   const handleDelete = (id) => {
     const copiedPost = posts;
-    const filteredPost = setPosts(copiedPost.filter((post) => post.id !== id));
+    setPosts(copiedPost.filter((post) => post.id !== id));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newPost = { title, days, body, author, category, image, bgc };
+
+    const id = posts.length + 1;
+
+    setPosts([...posts, { ...newPost, id }]);
+
+    console.log(newPost);
   };
 
   return (
@@ -55,6 +75,64 @@ const App = () => {
           />
         </div>
       ))}
+      <div className="add-form" onSubmit={handleSubmit}>
+        <form>
+          <label>title:</label>
+          <input
+            type="text"
+            required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+
+          <label>Body:</label>
+          <textarea
+            type="text"
+            required
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+          <label>Days:</label>
+          <input
+            type="text"
+            required
+            value={days}
+            onChange={(e) => setDays(e.target.value)}
+          />
+
+          <label>Category:</label>
+          <input
+            type="text"
+            required
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+
+          <label>Author:</label>
+          <input
+            type="text"
+            required
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+
+          <label>Background:</label>
+          <input
+            type="text"
+            required
+            value={bgc}
+            onChange={(e) => setBgc(e.target.value)}
+          />
+
+          <label>Image:</label>
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+          <button onClick={handleSubmit}>Add New Post</button>
+        </form>
+      </div>
     </div>
   );
 };
