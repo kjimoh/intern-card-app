@@ -40,12 +40,14 @@ const App = () => {
     },
   ]);
 
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [days, setDays] = useState("");
-  const [body, setBody] = useState("");
-  const [image, setImage] = useState();
-  const [bgc, setBgc] = useState("");
+  const [cardValue, setCardValue] = useState({
+    title: "",
+    category: "",
+    days: "",
+    body: "",
+    image: "",
+    bgc: "",
+  });
 
   const handleDelete = (id) => {
     const copiedPost = posts;
@@ -55,14 +57,17 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newPost = { title, category, days, body, image, bgc };
-
     setPosts([
       ...posts,
-      { ...newPost, id: posts.length + 1, image: Images[image] },
+      { ...cardValue, id: posts.length + 1, image: Images[cardValue.image] },
     ]);
+  };
 
-    console.log(newPost);
+  const handleState = (key, e) => {
+    e.preventDefault();
+    const newState = { ...cardValue };
+    newState[key] = e.target.value;
+    setCardValue(newState);
   };
 
   return (
@@ -87,46 +92,47 @@ const App = () => {
           <input
             type="text"
             required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={cardValue.title}
+            onChange={(e) => handleState("title", e)}
           />
+
           <label>Category:</label>
           <input
             type="text"
             required
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            value={cardValue.category}
+            onChange={(e) => handleState("category", e)}
           />
 
           <label>Days:</label>
           <input
             type="text"
             required
-            value={days}
-            onChange={(e) => setDays(e.target.value)}
+            value={cardValue.days}
+            onChange={(e) => handleState("days", e)}
           />
 
           <label>Body:</label>
           <textarea
             type="text"
             required
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
+            value={cardValue.body}
+            onChange={(e) => handleState("body", e)}
           />
 
           <label>Image:</label>
           <input
             type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={cardValue.image}
+            onChange={(e) => handleState("image", e)}
           />
 
           <label>Background:</label>
           <input
             type="text"
             required
-            value={bgc}
-            onChange={(e) => setBgc(e.target.value)}
+            value={cardValue.bgc}
+            onChange={(e) => handleState("bgc", e)}
           />
 
           <button onClick={handleSubmit}>Add New Post</button>
