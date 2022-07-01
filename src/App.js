@@ -71,8 +71,9 @@ const App = () => {
     setCardValue(newState);
   };
 
-  const handleDelete = (id, e) => {
+  const handleDelete = (id) => {
     const copiedPost = posts;
+    copiedPost.filter((post) => post.id !== id);
 
     copiedPost.map((post) => {
       if (post.id === id) {
