@@ -59,8 +59,14 @@ const App = () => {
 
     setPosts([
       ...posts,
-      { ...cardValue, id: posts.length + 1, image: Images[cardValue.image] },
+      {
+        ...cardValue,
+        id: posts.length + Math.random() * 1000,
+        image: Images[cardValue.image],
+      },
     ]);
+
+    console.log(posts);
   };
 
   const handleState = (key, e) => {
