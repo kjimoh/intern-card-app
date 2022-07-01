@@ -49,11 +49,6 @@ const App = () => {
     bgc: "",
   });
 
-  const handleDelete = (id) => {
-    const copiedPost = posts;
-    setPosts(copiedPost.filter((post) => post.id !== id));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,6 +71,17 @@ const App = () => {
     setCardValue(newState);
   };
 
+  const handleDelete = (id, e) => {
+    const copiedPost = posts;
+
+    copiedPost.map((post) => {
+      if (post.id === id) {
+        const newCardValue = { ...post };
+        setCardValue(newCardValue);
+        console.log(newCardValue);
+      }
+    });
+  };
   return (
     <div className="app">
       {posts.map((post) => (
