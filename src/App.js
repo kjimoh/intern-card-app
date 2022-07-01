@@ -73,9 +73,8 @@ const App = () => {
 
   const handleDelete = (id) => {
     const copiedPost = posts;
-    copiedPost.filter((post) => post.id !== id);
 
-    copiedPost.map((post) => {
+    copiedPost.forEach((post) => {
       if (post.id === id) {
         const newCardValue = { ...post };
         setCardValue(newCardValue);
