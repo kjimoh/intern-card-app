@@ -47,19 +47,36 @@ const App = () => {
     body: "",
     image: "",
     bgc: "",
+    id: null,
   });
+
+  const handleDelete = (id) => {
+    const copiedPost = posts;
+
+    copiedPost.forEach((post) => {
+      if (post.id === id) {
+        const newCardValue = { ...post };
+        setCardValue(newCardValue);
+      }
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setPosts([
-      ...posts,
-      {
-        ...cardValue,
-        id: posts.length + Math.random() * 1000,
-        image: Images[cardValue.image],
-      },
-    ]);
+    if (cardValue.id !== null) {
+      setPosts(
+        posts.map((post) => (post.id !== cardValue.id ? post : cardValue))
+      );
+    } else if (cardValue.id === null) {
+      setPosts([
+        ...posts,
+        {
+          ...cardValue,
+          id: posts.length + Math.random() * 1000,
+          image: Images[cardValue.image],
+        },
+      ]);
+    }
 
     console.log(posts);
   };
@@ -71,17 +88,6 @@ const App = () => {
     setCardValue(newState);
   };
 
-  const handleDelete = (id) => {
-    const copiedPost = posts;
-
-    copiedPost.forEach((post) => {
-      if (post.id === id) {
-        const newCardValue = { ...post };
-        setCardValue(newCardValue);
-        console.log(newCardValue);
-      }
-    });
-  };
   return (
     <div className="app">
       {posts.map((post) => (
