@@ -87,6 +87,9 @@ const App = () => {
     newState[key] = e.target.value;
     setCardValue(newState);
   };
+  const handleCreateCard = () => {
+    setPosts([...posts, cardValue]);
+  };
 
   return (
     <div className="app">
@@ -153,7 +156,9 @@ const App = () => {
             onChange={(e) => handleState("bgc", e)}
           />
 
-          <button onClick={handleSubmit}>Add New Post</button>
+          <button onClick={handleSubmit} onDoubleClick={handleCreateCard}>
+            Add New Post
+          </button>
         </form>
       </div>
     </div>
