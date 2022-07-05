@@ -40,6 +40,8 @@ const App = () => {
     },
   ]);
 
+  const [buttonValue, setButtonValue] = useState("Add New post");
+
   const [cardValue, setCardValue] = useState({
     title: "",
     category: "",
@@ -58,6 +60,7 @@ const App = () => {
         const newCardValue = { ...post };
         setCardValue(newCardValue);
       }
+      setButtonValue("Update Post");
     });
   };
 
@@ -79,6 +82,16 @@ const App = () => {
     }
 
     console.log(posts);
+    setCardValue({
+      title: "",
+      id: null,
+      category: "",
+      days: "",
+      body: "",
+      image: "",
+      bgc: "",
+    });
+    setButtonValue("Add New Post");
   };
 
   const handleState = (key, e) => {
@@ -86,9 +99,6 @@ const App = () => {
     const newState = { ...cardValue };
     newState[key] = e.target.value;
     setCardValue(newState);
-  };
-  const handleCreateCard = () => {
-    setPosts([...posts, cardValue]);
   };
 
   return (
@@ -156,9 +166,7 @@ const App = () => {
             onChange={(e) => handleState("bgc", e)}
           />
 
-          <button onClick={handleSubmit} onDoubleClick={handleCreateCard}>
-            Add New Post
-          </button>
+          <button onClick={handleSubmit}>{buttonValue}</button>
         </form>
       </div>
     </div>
