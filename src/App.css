@@ -23,9 +23,9 @@
   border-radius: 1.5rem;
   display: flex;
   overflow: hidden;
-
   margin-bottom: 20px;
   padding: 0;
+  transition: all 1s;
 }
 
 .card-image {
@@ -189,7 +189,7 @@ textarea {
   height: 100px;
   margin-bottom: 20px;
   border-radius: 20px;
-  padding: 0 15px;
+  padding: 10px 15px;
   font-size: 1rem;
   font-family: open sans;
 }
@@ -218,19 +218,38 @@ label {
 .icons {
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  left: -3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 2rem;
   width: 2rem;
   justify-content: space-between;
+  transition: all 0.5s;
 }
+
 .icons img {
   height: 3rem;
   width: 3rem;
   margin: 10px;
   padding: 10px;
-  background-color: #efefef57;
+  background-color: rgba(255, 255, 255, 0.329);
   border-radius: 25px;
+  transition: all 0.5s;
+}
+
+.icons img:nth-child(2) {
+  transition-delay: 0.3s;
+}
+
+.icons img:hover {
+  background-color: rgba(255, 255, 255, 0.452);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.card:hover .icons {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
 }
