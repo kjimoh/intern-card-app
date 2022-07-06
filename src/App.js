@@ -60,8 +60,8 @@ const App = () => {
         const newCardValue = { ...post };
         setCardValue(newCardValue);
       }
-      setButtonValue("Update Post");
     });
+    setButtonValue("Update Post");
   };
 
   const handleSubmit = (e) => {
