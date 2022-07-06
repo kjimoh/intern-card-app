@@ -1,9 +1,23 @@
 import React from "react";
+import { Delete, Edit } from "./image";
 
-const Card = ({ title, category, days, body, image, bgc, onDelete }) => {
+const Card = ({
+  title,
+  category,
+  days,
+  body,
+  image,
+  bgc,
+  onEdit,
+  onDelete,
+}) => {
   return (
-    <div className="card" onClick={onDelete}>
+    <div className="card">
       <div className="card-image" style={{ background: `${bgc}` }}>
+        <div className="icons">
+          <img src={Delete} alt="" onClick={onDelete} />
+          <img src={Edit} alt="" onClick={onEdit} />
+        </div>
         <img src={image} alt="" />
       </div>
       <div className="card-details">

@@ -52,7 +52,7 @@ const App = () => {
     id: null,
   });
 
-  const handleDelete = (id) => {
+  const handleEdit = (id) => {
     const copiedPost = posts;
 
     copiedPost.forEach((post) => {
@@ -62,6 +62,12 @@ const App = () => {
       }
     });
     setButtonValue("Update Post");
+  };
+
+  const handleDelete = (id) => {
+    const postCopied = posts;
+
+    setPosts(postCopied.filter((post) => post.id !== id));
   };
 
   const handleSubmit = (e) => {
@@ -104,8 +110,9 @@ const App = () => {
   return (
     <div className="app">
       {posts.map((post) => (
-        <div className="app-content">
+        <div className="app-content" key={post.id}>
           <Card
+            onEdit={() => handleEdit(post.id)}
             onDelete={() => handleDelete(post.id)}
             title={post.title}
             category={post.category}

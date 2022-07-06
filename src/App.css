@@ -35,6 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .card-details {
@@ -213,4 +214,23 @@ label {
   font-size: 1.2rem;
   font-family: open sans;
   margin-bottom: 5px;
+}
+.icons {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
+  justify-content: space-between;
+}
+.icons img {
+  height: 3rem;
+  width: 3rem;
+  margin: 10px;
+  padding: 10px;
+  background-color: #efefef57;
+  border-radius: 25px;
 }
