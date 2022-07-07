@@ -1,5 +1,6 @@
 import React from "react";
 import { Delete, Edit } from "./image";
+import { Link } from "react-router-dom";
 
 const Card = ({
   title,
@@ -10,6 +11,7 @@ const Card = ({
   bgc,
   onEdit,
   onDelete,
+  passData,
 }) => {
   return (
     <div className="card">
@@ -34,7 +36,9 @@ const Card = ({
             <img src={image} alt="" />
           </div>
           <span className="author"> SalafiSignature</span>
-          <span className="learn">Read more🡢</span>
+          <span className="learn" onClick={passData}>
+            <Link to="/page">Read more🡢</Link>
+          </span>
         </div>
       </div>
     </div>

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Card from "./components/Card";
 import "./App.css";
 import { Business, Group, Social } from "./components/image";
-
+import PostPage from "./PostPage";
+import Navbar from "./Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Images = {
   Social,
   Group,
@@ -41,6 +43,15 @@ const App = () => {
   ]);
 
   const [buttonValue, setButtonValue] = useState("Add New post");
+  const [pageValue, setPageValue] = useState({
+    title: "",
+    category: "",
+    days: "",
+    body: "",
+    image: "",
+    bgc: "",
+    id: null,
+  });
 
   const [cardValue, setCardValue] = useState({
     title: "",
@@ -107,75 +118,101 @@ const App = () => {
     setCardValue(newState);
   };
 
+  const handlePassData = (id) => {
+    const pageData = posts;
+
+    pageData.forEach((post) => {
+      if (post.id === id) {
+        const postPageData = { ...post };
+        setPageValue(postPageData);
+        console.log(postPageData);
+      }
+    });
+  };
+
   return (
     <div className="app">
-      {posts.map((post) => (
-        <div className="app-content" key={post.id}>
-          <Card
-            onEdit={() => handleEdit(post.id)}
-            onDelete={() => handleDelete(post.id)}
-            title={post.title}
-            category={post.category}
-            days={post.days}
-            body={post.body}
-            image={post.image}
-            bgc={post.bgc}
-            id={post.id}
-          />
-        </div>
-      ))}
-      <div className="add-form" onSubmit={handleSubmit}>
-        <form>
-          <label>title:</label>
-          <input
-            type="text"
-            required
-            value={cardValue.title}
-            onChange={(e) => handleState("title", e)}
-          />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {posts.map((post) => (
+                  <div className="app-content" key={post.id}>
+                    <Card
+                      onEdit={() => handleEdit(post.id)}
+                      onDelete={() => handleDelete(post.id)}
+                      passData={() => handlePassData(post.id)}
+                      title={post.title}
+                      category={post.category}
+                      days={post.days}
+                      body={post.body}
+                      image={post.image}
+                      bgc={post.bgc}
+                      id={post.id}
+                    />
+                  </div>
+                ))}
+                <div className="add-form" onSubmit={handleSubmit}>
+                  <form>
+                    <label>title:</label>
+                    <input
+                      type="text"
+                      required
+                      value={cardValue.title}
+                      onChange={(e) => handleState("title", e)}
+                    />
 
-          <label>Category:</label>
-          <input
-            type="text"
-            required
-            value={cardValue.category}
-            onChange={(e) => handleState("category", e)}
-          />
+                    <label>Category:</label>
+                    <input
+                      type="text"
+                      required
+                      value={cardValue.category}
+                      onChange={(e) => handleState("category", e)}
+                    />
 
-          <label>Days:</label>
-          <input
-            type="text"
-            required
-            value={cardValue.days}
-            onChange={(e) => handleState("days", e)}
-          />
+                    <label>Days:</label>
+                    <input
+                      type="date"
+                      required
+                      value={cardValue.days}
+                      onChange={(e) => handleState("days", e)}
+                    />
 
-          <label>Body:</label>
-          <textarea
-            type="text"
-            required
-            value={cardValue.body}
-            onChange={(e) => handleState("body", e)}
-          />
+                    <label>Body:</label>
+                    <textarea
+                      type="text"
+                      required
+                      value={cardValue.body}
+                      onChange={(e) => handleState("body", e)}
+                    />
 
-          <label>Image:</label>
-          <input
-            type="text"
-            value={cardValue.image}
-            onChange={(e) => handleState("image", e)}
-          />
+                    <label>Image:</label>
+                    <input
+                      type="text"
+                      value={cardValue.image}
+                      onChange={(e) => handleState("image", e)}
+                    />
 
-          <label>Background:</label>
-          <input
-            type="text"
-            required
-            value={cardValue.bgc}
-            onChange={(e) => handleState("bgc", e)}
-          />
+                    <label>Background:</label>
+                    <input
+                      type="text"
+                      required
+                      value={cardValue.bgc}
+                      onChange={(e) => handleState("bgc", e)}
+                    />
 
-          <button onClick={handleSubmit}>{buttonValue}</button>
-        </form>
-      </div>
+                    <button onClick={handleSubmit}>{buttonValue}</button>
+                  </form>
+                </div>
+              </>
+            }
+          />
+          <Route path="/page" element={<PostPage pageValue={pageValue} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

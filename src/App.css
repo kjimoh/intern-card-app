@@ -1,10 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
 }
 
 .app {
@@ -129,6 +137,7 @@ p {
   overflow: hidden;
   margin-right: 0.75rem;
 }
+
 .circle img {
   height: 85%;
   width: 100%;
@@ -160,7 +169,9 @@ p {
   color: #007ae9;
   align-items: flex-end;
 }
-
+.learn a {
+  text-decoration: none;
+}
 .add-form {
   width: 35%;
 }
@@ -195,16 +206,17 @@ textarea {
 }
 
 button {
-  height: 40px;
+  height: 60px;
   border: none;
-  background-color: #007ae9;
+  background: linear-gradient(to right, blue, rgb(187, 16, 187));
   color: #fff;
-  margin: 35px;
+  margin: 30px;
   margin-bottom: 70px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  font-family: open sans;
+  border-radius: 5px;
+  font-family: montserrat;
   font-size: 1rem;
+  font-weight: 600;
 }
 input :focus {
   border: none;
@@ -252,4 +264,91 @@ label {
   position: absolute;
   top: 1rem;
   left: 1.5rem;
+}
+
+nav {
+  font-family: "montserrat";
+  width: 100vw;
+  height: 4rem;
+  background-color: #fff;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 150px;
+}
+
+nav ul {
+  display: flex;
+  width: 25%;
+  justify-content: space-between;
+}
+ul li a {
+  font-weight: 500;
+}
+nav .blog-name {
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #000;
+  font-family: lobster;
+  letter-spacing: 5px;
+}
+
+.page-post {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  font-family: "montserrat";
+  text-align: center;
+  max-height: 100vh;
+}
+.days {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.title {
+  font-family: "montserrat";
+  font-weight: 600;
+  font-size: 3rem;
+  padding: 30px;
+  width: 70vw;
+  margin-bottom: 20px;
+  height: 120px;
+}
+.post-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.category {
+  height: 60px;
+  width: 200px;
+  background: linear-gradient(to right, blue, rgb(187, 16, 187));
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+.post-image {
+  width: 50vw;
+  height: 55vh;
+  border-radius: 5px;
+}
+.post-image img {
+  width: 25rem;
+}
+.post-body {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+}
+.post-body p {
+  display: inline-block;
+  width: 100%;
 }
