@@ -1,5 +1,7 @@
 import React from "react";
+// ICONS FOR EDITING N DELETING
 import { Delete, Edit } from "./image";
+// REACT ROUTER LINK
 import { Link } from "react-router-dom";
 
 const Card = ({
@@ -12,6 +14,7 @@ const Card = ({
   onEdit,
   onDelete,
   passData,
+  id,
 }) => {
   return (
     <div className="card">
@@ -37,7 +40,7 @@ const Card = ({
           </div>
           <span className="author"> SalafiSignature</span>
           <span className="learn" onClick={passData}>
-            <Link to="/page">Read more🡢</Link>
+            <Link to={`/page/${id}`}>Read more🡢</Link>
           </span>
         </div>
       </div>

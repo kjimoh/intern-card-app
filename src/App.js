@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import Card from "./components/Card";
 import "./App.css";
-import { Business, Group, Social } from "./components/image";
-import PostPage from "./PostPage";
 import Navbar from "./Navbar";
+import PostPage from "./PostPage";
+import Card from "./components/Card";
+import { Business, Group, Social } from "./components/image";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// POSTS IMAGES
 const Images = {
   Social,
   Group,
   Business,
 };
 
+// INITIALIZED ARRAY OF OBJECTS
 const App = () => {
   const [posts, setPosts] = useState([
     {
@@ -42,45 +45,35 @@ const App = () => {
     },
   ]);
 
+  // TEXT DISPLAYED ON THE SUBMIT BUTTON
   const [buttonValue, setButtonValue] = useState("Add New post");
-  const [pageValue, setPageValue] = useState({
-    title: "",
-    category: "",
-    days: "",
-    body: "",
-    image: "",
-    bgc: "",
-    id: null,
-  });
 
-  const [cardValue, setCardValue] = useState({
-    title: "",
-    category: "",
-    days: "",
-    body: "",
-    image: "",
-    bgc: "",
-    id: null,
-  });
+  // INITIALIZED OBJECT TO PASS EACH CARD DATA TO OTHER SCREENS
+  const [pageValue, setPageValue] = useState({});
 
+  // INITIALIZED OBJECT TO MANAGE FORM INPUTS/DATA
+  const [cardValue, setCardValue] = useState({});
+
+  // FUNCTION TO EDIT A POST
   const handleEdit = (id) => {
     const copiedPost = posts;
 
     copiedPost.forEach((post) => {
       if (post.id === id) {
-        const newCardValue = { ...post };
-        setCardValue(newCardValue);
+        setCardValue({ ...post });
       }
     });
     setButtonValue("Update Post");
   };
 
+  // FUNCTION TO DELETE A POST
   const handleDelete = (id) => {
     const postCopied = posts;
 
     setPosts(postCopied.filter((post) => post.id !== id));
   };
 
+  // FUNCTION TO SUBMIT ALL FORM INPUTS/DATA TO CREATE A NEW POST
   const handleSubmit = (e) => {
     e.preventDefault();
     if (cardValue.id !== null) {
@@ -97,7 +90,7 @@ const App = () => {
         },
       ]);
     }
-
+    // SETTING ALL INPUT FIELD TO BLANK AFTER SUBMIT BUTTON HAS BEEN CLICKED.
     console.log(posts);
     setCardValue({
       title: "",
@@ -111,6 +104,7 @@ const App = () => {
     setButtonValue("Add New Post");
   };
 
+  // FUNCTION TO MANAGE ALL FORM INPUTS STATES
   const handleState = (key, e) => {
     e.preventDefault();
     const newState = { ...cardValue };
@@ -118,14 +112,13 @@ const App = () => {
     setCardValue(newState);
   };
 
+  // FUNCTION TO PASS DATA TO OTHER SCREENS
   const handlePassData = (id) => {
     const pageData = posts;
 
     pageData.forEach((post) => {
       if (post.id === id) {
-        const postPageData = { ...post };
-        setPageValue(postPageData);
-        console.log(postPageData);
+        setPageValue({ ...post });
       }
     });
   };
@@ -155,7 +148,7 @@ const App = () => {
                     />
                   </div>
                 ))}
-                <div className="add-form" onSubmit={handleSubmit}>
+                <div className="add-form">
                   <form>
                     <label>title:</label>
                     <input
@@ -211,6 +204,10 @@ const App = () => {
             }
           />
           <Route path="/page" element={<PostPage pageValue={pageValue} />} />
+          <Route
+            path="/page/:id"
+            element={<PostPage pageValue={pageValue} id={pageValue.id} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
