@@ -1,5 +1,4 @@
 import React from "react";
-
 const PostPage = ({ pageValue }) => {
   return (
     <div className="page-post">

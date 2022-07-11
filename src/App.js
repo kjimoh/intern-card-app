@@ -203,10 +203,9 @@ const App = () => {
               </>
             }
           />
-          <Route path="/page" element={<PostPage pageValue={pageValue} />} />
           <Route
             path="/page/:id"
-            element={<PostPage pageValue={pageValue} id={pageValue.id} />}
+            element={<PostPage pageValue={pageValue} />}
           />
         </Routes>
       </BrowserRouter>
